@@ -1,0 +1,26 @@
+name: Auto Zip & Release Flutter Structures
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  zip_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Zip Each Flavor
+        run: |
+          zip -r custom-api.zip custom-api/
+          zip -r pocketbase.zip pocketbase/
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            custom-api.zip
+            pocketbase.zip
