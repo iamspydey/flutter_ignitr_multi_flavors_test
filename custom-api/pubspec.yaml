@@ -9,6 +9,11 @@ version: 1.0.0+1
 environment:
   sdk: ^3.6.0
 
+# This project is created with [custom_api] flavor.
+# You can find more information about
+# This at https://github.com/thedevsbuddy/flutter_ignitr
+ignitr_flavor: custom_api
+
 dependencies:
   connectivity_plus: ^6.1.1
   cupertino_icons: ^1.0.8
