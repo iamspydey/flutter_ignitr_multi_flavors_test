@@ -1,0 +1,26 @@
+{
+  "flavors": [
+    {
+      "name": "PocketBase",
+      "value": "pocketbase"
+    },
+    {
+      "name": "Bare Bone",
+      "value": "barebone"
+    },
+    {
+      "name": "Api",
+      "value": "api"
+    }
+  ],
+  "stacks": [
+    {
+      "name": "GetX",
+      "value": "getx"
+    },
+    {
+      "name": "Bloc",
+      "value": "bloc"
+    }
+  ]
+}
