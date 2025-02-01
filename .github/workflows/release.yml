@@ -24,4 +24,4 @@ jobs:
           files: |
             custom-api.zip
             pocketbase.zip
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
