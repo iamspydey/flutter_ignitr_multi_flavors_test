@@ -9,6 +9,17 @@ version: 1.0.0+1
 environment:
   sdk: ^3.6.0
 
+# The Ignitr related configuration
+# This will be used by the [ignitr_cli]
+#
+# ---------------------------------------------------------
+# ------ DO NOT UPDATE OR REMOVE BELOW CONFIGURATION ------
+# ---------------------------------------------------------
+ignitr:
+  version: v0.1.7 # Ignitr version
+  flavor: api # Ignitr flavor
+  stack: getx # Ignitr stack
+
 dependencies:
   connectivity_plus: ^6.1.1
   cupertino_icons: ^1.0.8
