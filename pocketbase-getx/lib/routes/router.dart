@@ -21,8 +21,5 @@ List<GetPage> routes = [
   /// Setting Routes
   ...settingsRoutes,
 
-  /// Article Routes
-  ...articleRoutes,
-
   //%EDIT_CODE_ABOVE_THIS_LINE_AND_DONT_REMOVE_THIS_LINE%//
 ];

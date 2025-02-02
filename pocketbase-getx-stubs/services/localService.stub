@@ -1,5 +1,5 @@
 import '../../../shared/shared.dart';
-import '../../../getx/stubs/services/{SNAKE_MODULE}_service.dart';
+import '{SNAKE_MODULE}_service.dart';
  
 class Local{MODULE}Service extends BaseService implements {MODULE}Service {
   @override

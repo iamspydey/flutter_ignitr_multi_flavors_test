@@ -1,8 +1,8 @@
 /// {MODULE} Module
-export "../../getx/stubs/controllers/{SNAKE_MODULE}_controller.dart";
+export "controllers/{SNAKE_MODULE}_controller.dart";
 
-export "../../getx/stubs/routes/{SNAKE_MODULE}_router.dart";
+export "routes/{SNAKE_MODULE}_router.dart";
 
-export "../../getx/stubs/services/{SNAKE_MODULE}_service.dart";
+export "services/{SNAKE_MODULE}_service.dart";
 
-export "../../getx/stubs/views/{SNAKE_MODULE}_page.dart";
+export "views/{SNAKE_MODULE}_page.dart";

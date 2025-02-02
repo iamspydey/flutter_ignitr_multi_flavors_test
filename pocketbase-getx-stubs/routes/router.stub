@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../getx/stubs/{SNAKE_MODULE}_module.dart';
+import '../{SNAKE_MODULE}_module.dart';
 
 /// Defines the routes for the [{MODULE}] module.
 /// This class contains the route paths and other route-related properties
