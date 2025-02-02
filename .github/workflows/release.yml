@@ -17,8 +17,8 @@ jobs:
         run: |
           zip -r api-getx.zip api-getx/
           zip -r pocketbase-getx.zip pocketbase-getx/
-          zip -r api-getx-stubs.zip pocketbase-getx/
-          zip -r pocketbase-getx-stubs.zip pocketbase-getx/
+          zip -r api-getx-stubs.zip api-getx-stubs/
+          zip -r pocketbase-getx-stubs.zip pocketbase-getx-stubs/
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
