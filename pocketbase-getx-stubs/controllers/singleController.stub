@@ -1,4 +1,3 @@
-const String stub = r"""
 import 'package:get/get.dart';
 
 import '../../../shared/shared.dart';
@@ -20,4 +19,3 @@ class {CONTROLLER}Controller extends AppController {
     
   }
 }
-""";

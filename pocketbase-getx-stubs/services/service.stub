@@ -2,8 +2,8 @@ import 'package:get/get.dart';
 
 import '../../../../config/config.dart';
 import '../../../shared/shared.dart';
-import 'remote_{SNAKE_MODULE}_service.dart';
-import 'local_{SNAKE_MODULE}_service.dart';
+import '../../../getx/stubs/services/remote_{SNAKE_MODULE}_service.dart';
+import '../../../getx/stubs/services/local_{SNAKE_MODULE}_service.dart';
 
 abstract class {MODULE}Service extends BaseService {
   /// Define if this is in dev mode

@@ -1,4 +1,3 @@
-const String stub = """
 import '../../../shared/shared.dart';
 import '{SNAKE_MODULE}_service.dart';
  
@@ -37,4 +36,3 @@ class Local{MODULE}Service extends BaseService implements {MODULE}Service {
     return ApiResponse.success();
   }
 }
-""";

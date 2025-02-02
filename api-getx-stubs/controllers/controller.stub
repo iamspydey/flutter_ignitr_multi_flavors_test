@@ -20,16 +20,25 @@ class {CONTROLLER}Controller extends AppController {
 
   Future<void> index({bool refresh = false}) async {
     try {
+      /// Define API Client For This Method
+      String _client = '{PLURAL_MODULE}-index';
+
       /// Start loading state
       if(!refresh) setBusy(true);
 
+      /// Initialise the service
+      _{CAMEL_MODULE}Service.init(_client);
+
       /// Call the API
-      ApiResponse response = await _{CAMEL_MODULE}Service.index();
+      ApiResponse response = await _{CAMEL_MODULE}Service.index(client: _client);
 
       /// Check if the response has error
       if (response.hasError()) {
         /// Show error message
         Toastr.error(message: "${response.message}");
+
+        /// Close the client
+        _{CAMEL_MODULE}Service.close(_client);
 
         /// Stop loading state
         setBusy(false);
@@ -41,6 +50,12 @@ class {CONTROLLER}Controller extends AppController {
 
       /// Stop loading state
       setBusy(false);
+
+      /// Update UI
+      update();
+
+      /// Close the client
+      _{CAMEL_MODULE}Service.close(_client);
     } catch (e) {
       print(e);
       Toastr.error(message: "Something went wrong.");
@@ -49,18 +64,30 @@ class {CONTROLLER}Controller extends AppController {
 
   Future<void> destroy({required int id}) async {
     try {
+      /// Define API Client For This Method
+      String _client = '{PLURAL_MODULE}-delete';
+
+      /// Initialise the service
+      _{CAMEL_MODULE}Service.init(_client);
+
       /// Call the API
-      ApiResponse response = await _{CAMEL_MODULE}Service.destroy(id: id);
+      ApiResponse response = await _{CAMEL_MODULE}Service.destroy(client: _client, id: id);
 
       /// Check if the response has error
       if (response.hasError()) {
         /// Show error message
         Toastr.error(message: "${response.message}");
+
+        /// Close the client
+        _{CAMEL_MODULE}Service.close(_client);
         return;
       }
 
       /// Reload the data
       await index(refresh: true);
+
+      /// Close the client
+      _{CAMEL_MODULE}Service.close(_client);
     } catch (e) {
       print(e);
       Toastr.error(message: "Something went wrong.");

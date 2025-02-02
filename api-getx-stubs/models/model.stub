@@ -1,4 +1,3 @@
-const String stub = """
 class {MODEL}Model {
   {MODEL}Model({
     this.id,
@@ -21,4 +20,3 @@ class {MODEL}Model {
         "id": id,
       };
 }
-""";
