@@ -14,12 +14,12 @@ class AppController extends GetxController {
 
   /// Observables
   RxBool setSticky = false.obs;
-  bool _isBusy = false;
+  RxBool _isBusy = false.obs;
 
   /// Getters
-  bool get isSticky => this.setSticky.value;
+  bool get isSticky => setSticky.value;
 
-  bool get isBusy => this._isBusy;
+  bool get isBusy => _isBusy.value;
 
   @override
   void onInit() {
@@ -39,7 +39,7 @@ class AppController extends GetxController {
 
   /// Set the busy state
   void setBusy(bool val) {
-    _isBusy = val;
+    _isBusy(val);
     update();
   }
 

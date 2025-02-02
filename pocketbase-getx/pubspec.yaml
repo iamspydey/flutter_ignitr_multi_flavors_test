@@ -9,13 +9,16 @@ version: 1.0.0+1
 environment:
   sdk: ^3.6.0
 
-# The `ignitr_flavor` setting
-# specifies the flavor of the Ignitr project being built.
-# In this case, the flavor is set to `pocketbase`.
-# ------------------------------------------------
-# ------ DO NOT UPDATE OR REMOVE THIS LINE ------
-# ------------------------------------------------
-ignitr_flavor: pocketbase
+# The Ignitr related configuration
+# This will be used by the [ignitr_cli]
+#
+# ---------------------------------------------------------
+# ------ DO NOT UPDATE OR REMOVE BELOW CONFIGURATION ------
+# ---------------------------------------------------------
+ignitr:
+  version: v0.1.7 # Ignitr version
+  flavor: pocketbase # Ignitr flavor
+  stack: getx # Ignitr stack
 
 dependencies:
   connectivity_plus: ^6.1.1

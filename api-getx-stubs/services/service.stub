@@ -7,7 +7,7 @@ import 'local_{SNAKE_MODULE}_service.dart';
 
 abstract class {MODULE}Service extends BaseService {
   /// Define if this is in dev mode
-  static bool devMode = Config.devMode;
+  static bool useLocal = Config.devMode;
 
   /// Create and get the instance of [{MODULE}Service]
   static {MODULE}Service get instance {
@@ -15,7 +15,7 @@ abstract class {MODULE}Service extends BaseService {
 
     if (!Get.isRegistered<{MODULE}Service>()) {
       Get.lazyPut<{MODULE}Service>(() {
-        if (devMode) return Local{MODULE}Service();
+        if (useLocal) return Local{MODULE}Service();
         if (!internetService.isConnected) return Local{MODULE}Service();
         return Remote{MODULE}Service();
       });

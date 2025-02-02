@@ -51,9 +51,6 @@ class {CONTROLLER}Controller extends AppController {
       /// Stop loading state
       setBusy(false);
 
-      /// Update UI
-      update();
-
       /// Close the client
       _{CAMEL_MODULE}Service.close(_client);
     } catch (e) {
