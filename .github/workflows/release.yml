@@ -15,13 +15,13 @@ jobs:
 
       - name: Zip Each Flavor
         run: |
-          zip -r custom-api.zip custom-api/
-          zip -r pocketbase.zip pocketbase/
+          zip -r api-getx.zip api/getx/
+          zip -r pocketbase-getx.zip pocketbase/getx/
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            custom-api.zip
-            pocketbase.zip
+            api-getx.zip
+            pocketbase-getx.zip
           token: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
