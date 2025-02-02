@@ -15,8 +15,8 @@ jobs:
 
       - name: Zip Each Flavor
         run: |
-          zip -r api-getx.zip api/getx/
-          zip -r pocketbase-getx.zip pocketbase/getx/
+          zip -r api-getx.zip api-getx/
+          zip -r pocketbase-getx.zip pocketbase-getx/
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
