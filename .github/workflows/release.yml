@@ -1,31 +1,52 @@
-name: Auto Zip & Release Flutter Structures
+name: Release New Version
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - release/*
 
 jobs:
-  zip_and_release:
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Zip Each Flavor
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh -y
+
+      - name: Extract version from branch name
+        id: get_version
+        run: |
+          branch_name=${GITHUB_REF#refs/heads/release/}
+          echo "Extracted version: $branch_name"
+          echo "new_version=$branch_name" >> $GITHUB_ENV
+
+      - name: Create new Git tag
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@github.com"
+          git tag ${{ steps.get_version.outputs.new_version }}
+          git push origin ${{ steps.get_version.outputs.new_version }}
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create ${{ steps.get_version.outputs.new_version }} --title "Release ${{ steps.get_version.outputs.new_version }}" --notes "See the full changelog in [CHANGELOG.md](./CHANGELOG.md)."
+
+      - name: Create Zip For Each Flavor
         run: |
           zip -r api-getx.zip api-getx/
-          zip -r pocketbase-getx.zip pocketbase-getx/
           zip -r api-getx-stubs.zip api-getx-stubs/
-          zip -r pocketbase-getx-stubs.zip pocketbase-getx-stubs/
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           files: |
             api-getx.zip
-            pocketbase-getx.zip
             api-getx-stubs.zip
-            pocketbase-getx-stubs.zip
-          token: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
