@@ -27,16 +27,16 @@ jobs:
 
       - name: Create new Git tag
         env:
-          GITHUB_TOKEN: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
-          git config --global user.name "iamspydey"
-          git config --global user.email "shoabkhan33@gmail.com"
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git tag ${{ steps.get_version.outputs.new_version }}
-          git push origin ${{ steps.get_version.outputs.new_version }}
+          git push https://x-access-token:${{ secrets.PAT }}@github.com/iamspydey/flutter_ignitr_multi_flavors_test.git ${{ steps.get_version.outputs.new_version }}
 
       - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         run: |
           gh release create ${{ steps.get_version.outputs.new_version }} --title "Release ${{ steps.get_version.outputs.new_version }}" --notes "See the full changelog in [CHANGELOG.md](./CHANGELOG.md)."
 
@@ -48,7 +48,7 @@ jobs:
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
-          token: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
+          token: ${{ secrets.PAT }}
           files: |
             api-getx.zip
             api-getx-stubs.zip
