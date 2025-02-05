@@ -34,7 +34,7 @@ jobs:
 
       - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
         run: |
           gh release create ${{ steps.get_version.outputs.new_version }} --title "Release ${{ steps.get_version.outputs.new_version }}" --notes "See the full changelog in [CHANGELOG.md](./CHANGELOG.md)."
 
@@ -46,7 +46,7 @@ jobs:
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
           files: |
             api-getx.zip
             api-getx-stubs.zip
