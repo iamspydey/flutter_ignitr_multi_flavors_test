@@ -40,16 +40,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{ steps.get_version.outputs.new_version }} --title "Release ${{ steps.get_version.outputs.new_version }}" --notes "See the full changelog in [CHANGELOG.md](./CHANGELOG.md)."
-
-      - name: Create Zip For Each Flavor
-        run: |
-          zip -r api-getx.zip api-getx/
-          zip -r api-getx-stubs.zip api-getx-stubs/
-
-      - name: Upload Release Assets
-        uses: softprops/action-gh-release@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          files: |
-            api-getx.zip
-            api-getx-stubs.zip

@@ -1,0 +1,27 @@
+name: Upload Binary To Latest Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  zip_and_release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Create Zip For Each Flavor
+        run: |
+          zip -r api-getx.zip api-getx/
+          zip -r api-getx-stubs.zip api-getx-stubs/
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          files: |
+            api-getx.zip
+            api-getx-stubs.zip
