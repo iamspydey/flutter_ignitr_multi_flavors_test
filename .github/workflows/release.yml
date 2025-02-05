@@ -40,3 +40,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create ${{ steps.get_version.outputs.new_version }} --title "Release ${{ steps.get_version.outputs.new_version }}" --notes "See the full changelog in [CHANGELOG.md](./CHANGELOG.md)."
+          # Explicitly run our release workflow for this new tag
+          gh workflow run upload-binary.yml --ref "${{ steps.get_version.outputs.new_version }}"

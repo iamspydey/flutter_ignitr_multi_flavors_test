@@ -1,6 +1,7 @@
 name: Upload Binary To Latest Release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*"
