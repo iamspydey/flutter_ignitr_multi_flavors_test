@@ -29,8 +29,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.CUSTOM_ACCESS_TOKEN }}
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "iamspydey"
+          git config --global user.email "shoabkhan33@gmail.com"
           git tag ${{ steps.get_version.outputs.new_version }}
           git push origin ${{ steps.get_version.outputs.new_version }}
 
