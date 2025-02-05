@@ -24,6 +24,7 @@ jobs:
           branch_name=${GITHUB_REF#refs/heads/release/}
           echo "Extracted version: $branch_name"
           echo "new_version=$branch_name" >> $GITHUB_ENV
+          echo "new_version=$branch_name" >> $GITHUB_OUTPUT
 
       - name: Create new Git tag
         env:
